@@ -1,0 +1,11 @@
+{
+  "id": "wf-leave-001",
+  "name": "Leave Request Approval",
+  "actions": [
+    { "id": "start", "name": "Start", "type": "Start" },
+    { "id": "set-requester", "name": "Set Requester", "type": "SetVariable", "config": { "variable": "requester", "value": "@triggerBody()?['requester']" } },
+    { "id": "manager-approval", "name": "Manager Approval", "type": "Approval", "config": { "title": "Leave request approval", "assignedTo": "manager@example.com" } },
+    { "id": "notify", "name": "Notify Requester", "type": "SendEmail", "config": { "to": "requester@example.com", "subject": "Leave request result", "body": "Your request has been processed." } },
+    { "id": "finish", "name": "Finish", "type": "Terminate", "config": { "runStatus": "Succeeded" } }
+  ]
+}
